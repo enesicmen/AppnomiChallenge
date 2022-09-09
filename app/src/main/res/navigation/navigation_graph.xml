@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/categoriesFragment">
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.appnomichallenge.ui.fragment.categories.CategoriesFragment"
+        android:label="Categories"
+        tools:layout="@layout/fragment_categories">
+
+
+        <action
+            android:id="@+id/action_categoriesFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.appnomichallenge.ui.fragment.products.ProductsFragment"
+        android:label="Products"
+        tools:layout="@layout/fragment_products">
+
+
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.example.appnomichallenge.ui.fragment.productDetail.ProductDetailFragment"
+        android:label="Product Detail"
+        tools:layout="@layout/fragment_products_detail">
+
+
+        <action
+            android:id="@+id/action_productDetailFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
+
+</navigation>

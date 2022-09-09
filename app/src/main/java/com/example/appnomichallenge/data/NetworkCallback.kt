@@ -1,4 +1,6 @@
 package com.example.appnomichallenge.data
 
-interface NetworkCallback {
+interface NetworkCallback <T>{
+    fun onSuccess(data: T)
+    fun onError(message: String)
 }
