@@ -3,7 +3,7 @@ package com.example.appnomichallenge.data.repository
 import com.example.appnomichallenge.data.NetworkCallback
 import com.example.appnomichallenge.data.api.ApiService
 import com.example.appnomichallenge.data.api.response.CategoriesApiResponse
-import com.example.appnomichallenge.data.model.CategoriesModel
+import com.example.appnomichallenge.data.model.Categories
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,7 +12,7 @@ import javax.inject.Inject
 class CategoriesRepository @Inject constructor(
     private val apiService: ApiService
 ) {
-    fun getCategories(callback: NetworkCallback<List<CategoriesModel>>) {
+    fun getCategories(callback: NetworkCallback<List<Categories>>) {
 
         val call: Call<CategoriesApiResponse> = apiService.getCategories()
         call.enqueue(object : Callback<CategoriesApiResponse> {
@@ -21,8 +21,8 @@ class CategoriesRepository @Inject constructor(
                 response: Response<CategoriesApiResponse>
             ) {
                 if (response.isSuccessful) {
-                    val popularMoviesApiResponse = response.body()!!
-                    callback.onSuccess(data = popularMoviesApiResponse.data)
+                    val categoriesApiResponse = response.body()!!
+                    callback.onSuccess(data = categoriesApiResponse.data)
                 } else {
                     callback.onError(message = response.message())
                 }

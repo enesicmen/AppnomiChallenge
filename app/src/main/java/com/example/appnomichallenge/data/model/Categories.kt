@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class CategoriesModel (
+class Categories (
 
     @SerializedName("categoryId")
     val categoryId: String? = null,
@@ -19,13 +19,8 @@ class CategoriesModel (
     @SerializedName("createDate")
     val createDate: String? = null,
 
-    @SerializedName("updateDate")
-    val updateDate: String? = null,
-
-    @SerializedName("totalProducts")
-    val totalProducts: Int? = null,
-
     @SerializedName("isActive")
     val isActive: Boolean = false,
+
 
 ): Parcelable

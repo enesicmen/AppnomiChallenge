@@ -12,20 +12,9 @@
         android:label="Categories"
         tools:layout="@layout/fragment_categories">
 
-
         <action
             android:id="@+id/action_categoriesFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/productsFragment"
-        android:name="com.example.appnomichallenge.ui.fragment.products.ProductsFragment"
-        android:label="Products"
-        tools:layout="@layout/fragment_products">
-
-
-
 
     </fragment>
 
@@ -35,10 +24,24 @@
         android:label="Product Detail"
         tools:layout="@layout/fragment_products_detail">
 
-
         <action
             android:id="@+id/action_productDetailFragment_to_productsFragment"
             app:destination="@id/productsFragment" />
+
+
+        <argument
+            android:name="categories"
+            app:argType="com.example.appnomichallenge.data.model.Categories" />
     </fragment>
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.appnomichallenge.ui.fragment.products.ProductsFragment"
+        android:label="Products"
+        tools:layout="@layout/fragment_products">
+
+    </fragment>
+
+
 
 </navigation>
