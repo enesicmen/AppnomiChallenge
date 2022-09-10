@@ -13,8 +13,8 @@ class CategoriesModel (
     @SerializedName("name")
     val name: String? = null,
 
-    @SerializedName("image")
-    val image: String? = null,
+    @SerializedName("icon")
+    val icon: String? = null,
 
     @SerializedName("createDate")
     val createDate: String? = null,

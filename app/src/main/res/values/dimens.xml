@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--row_categories -->
+    <dimen name="cw_elevation_10dp">10dp</dimen>
+    <dimen name="cw_corner_radius_10dp">10dp</dimen>
+    <dimen name="cw_padding_top_5dp">5dp</dimen>
+    <dimen name="cw_padding_bottom_5dp">5dp</dimen>
+    <dimen name="cw_margin_start_10dp">10dp</dimen>
+    <dimen name="cw_margin_end_10dp">10dp</dimen>
+    <dimen name="cw_margin_top_10dp">10dp</dimen>
+    <dimen name="cw_padding_16dp">16dp</dimen>
+
+    <dimen name="cl_padding_top_5dp">5dp</dimen>
+    <dimen name="cl_padding_bottom_5dp">5dp</dimen>
+    <dimen name="cl_padding_start_3dp">3dp</dimen>
+
+    <dimen name="iv_width_64dp">64dp</dimen>
+    <dimen name="tv_margin_start_16dp">16dp</dimen>
+    <dimen name="tv_margin_start_5dp">5dp</dimen>
+    <dimen name="tv_margin_top_5dp">5dp</dimen>
+    <!--row_categories -->
+
+</resources>

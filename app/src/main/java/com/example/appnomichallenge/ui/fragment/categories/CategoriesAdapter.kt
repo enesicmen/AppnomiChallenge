@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appnomichallenge.R
 import com.example.appnomichallenge.data.model.CategoriesModel
 import com.example.appnomichallenge.databinding.RowCategoriesBinding
+import com.example.appnomichallenge.ui.base.helper.UIFontSize
+import com.example.appnomichallenge.ui.ext.load
+import com.example.appnomichallenge.util.Util
+import com.squareup.picasso.Picasso
 
 class CategoriesAdapter(
     activity: Activity,
@@ -60,9 +64,24 @@ class CategoriesAdapter(
     inner class CategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = RowCategoriesBinding.bind(itemView)
 
+        init {
+            setFontSize()
+        }
+
         fun onBind(position: Int, categoriesModel: CategoriesModel) {
 
             binding.tvName.text = categoriesModel.name
+            binding.ivCategory.load(categoriesModel.icon)
+            binding.tvCreateDate.text = Util.getDateFormat(categoriesModel.createDate!!)
+            binding.tvTotalProductsValue.text = categoriesModel.totalProducts.toString()
+
+        }
+
+        private fun setFontSize(){
+            binding.tvName.textSize = UIFontSize.FONT_SIZE_18
+            binding.tvTotalProducts.textSize = UIFontSize.FONT_SIZE_13
+            binding.tvTotalProductsValue.textSize = UIFontSize.FONT_SIZE_13
+            binding.tvCreateDate.textSize = UIFontSize.FONT_SIZE_13
         }
     }
 

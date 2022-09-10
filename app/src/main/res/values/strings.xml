@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppnomiChallenge</string>
+    <string name="total_products">Total Products:</string>
 </resources>
