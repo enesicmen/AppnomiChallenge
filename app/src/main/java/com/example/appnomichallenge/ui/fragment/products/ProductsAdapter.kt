@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appnomichallenge.R
 import com.example.appnomichallenge.data.model.Products
+import com.example.appnomichallenge.data.model.ProductsImage
 import com.example.appnomichallenge.databinding.RowProductsBinding
+import com.example.appnomichallenge.ui.base.helper.UIFontSize
 import com.example.appnomichallenge.util.Util
 
 class ProductsAdapter(
@@ -60,6 +62,7 @@ class ProductsAdapter(
 
     inner class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = RowProductsBinding.bind(itemView)
+        lateinit var mProductsImageAdapter: ProductsImageAdapter
 
         init {
             setFontSize()
@@ -82,6 +85,9 @@ class ProductsAdapter(
                 binding.tvCampaignPrice.visibility = View.GONE
             }
 
+            val productsImage = products.productsImage
+            setProductsImageAdapter(productsImage)
+
             binding.root.setOnClickListener(
                 View.OnClickListener {
                     mCallback?.onClickItem(position, products)
@@ -89,8 +95,20 @@ class ProductsAdapter(
             )
         }
 
-        private fun setFontSize(){
+        private fun setProductsImageAdapter(images: List<ProductsImage>) {
+            mProductsImageAdapter = ProductsImageAdapter(mActivity!!,images ?: emptyList())
+            binding.rvImages.adapter = mProductsImageAdapter
+        }
 
+        private fun setFontSize(){
+            binding.tvTitle.textSize = UIFontSize.FONT_SIZE_15
+            binding.tvPrice.textSize = UIFontSize.FONT_SIZE_13
+            binding.tvPriceValue.textSize = UIFontSize.FONT_SIZE_13
+            binding.tvPriceCurrency.textSize = UIFontSize.FONT_SIZE_13
+            binding.tvCampaignPrice.textSize = UIFontSize.FONT_SIZE_13
+            binding.tvCampaignPriceValue.textSize = UIFontSize.FONT_SIZE_13
+            binding.tvCampaignPriceCurrency.textSize = UIFontSize.FONT_SIZE_13
+            binding.tvCreateDate.textSize = UIFontSize.FONT_SIZE_13
         }
     }
 

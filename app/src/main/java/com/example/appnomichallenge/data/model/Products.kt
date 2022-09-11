@@ -20,7 +20,7 @@ class Products {
     val createDate: String? = null
 
     @SerializedName("images")
-    val productsImage: MutableList<ProductsImage> = arrayListOf()
+    val productsImage: List<ProductsImage> = arrayListOf()
 
 }
 

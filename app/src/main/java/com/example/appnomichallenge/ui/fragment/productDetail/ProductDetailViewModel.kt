@@ -11,22 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductDetailViewModel @Inject constructor(
-    private val productsRepository: ProductsRepository
+
 ) : ViewModel() {
 
-    var productsList: SingleLiveEvent<Resource<List<Products>>> = SingleLiveEvent()
-
-    fun getProducts(categoryId: String){
-        productsList.value = Resource.Loading()
-        productsRepository.getProducts(categoryId,object : NetworkCallback<List<Products>>{
-            override fun onSuccess(data: List<Products>) {
-                productsList.value = Resource.Success(data)
-            }
-
-            override fun onError(message: String) {
-                productsList.value = Resource.Error(message)
-            }
-
-        })
-    }
 }

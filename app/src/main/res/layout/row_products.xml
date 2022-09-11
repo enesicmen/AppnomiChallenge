@@ -5,6 +5,7 @@
     app:cardCornerRadius="@dimen/cw_corner_radius_10dp"
     android:paddingTop="@dimen/cw_padding_top_5dp"
     android:paddingBottom="@dimen/cw_padding_bottom_5dp"
+    android:layout_marginBottom="@dimen/cw_margin_bottom_10dp"
     android:layout_marginStart="@dimen/cw_margin_start_10dp"
     android:layout_marginEnd="@dimen/cw_margin_end_10dp"
     android:padding="@dimen/cw_padding_16dp"
@@ -22,24 +23,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/rw_margin_start_3dp"
+            android:layout_marginTop="@dimen/rw_margin_top_5dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="@dimen/tv_margin_start_3dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvImages"
             tools:text="Hamburger" />
-
 
         <TextView
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="@dimen/tv_margin_start_3dp"
             android:text="@string/price"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +70,7 @@
             android:id="@+id/tvPriceCurrency"
             android:layout_width="wrap_content"
             android:textColor="@color/black"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="@dimen/tv_margin_start_3dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/tvPriceValue"
             app:layout_constraintStart_toEndOf="@+id/tvPriceValue"
@@ -71,7 +81,7 @@
             android:id="@+id/tvCampaignPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="@dimen/tv_margin_start_3dp"
             android:text="@string/campaign_price"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,11 +111,11 @@
 
         <TextView
             android:id="@+id/tvCreateDate"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="@dimen/tv_margin_end_5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvImages"
             tools:text="2021-01-15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,8 +52,8 @@ class CategoriesFragment:
     private fun setCategoriesAdapter() {
         mCategoriesAdapter = CategoriesAdapter(requireActivity(), filteredCategoriesList)
         mCategoriesAdapter.setCallBack(object : CategoriesAdapter.CallBack {
-            override fun onClickItem(position: Int, categories: Categories) {
-                val actionDetail = CategoriesFragmentDirections.actionCategoriesFragmentToProductDetailFragment(categories = categories)
+            override fun onClickItem(position: Int, categoryId: String) {
+                val actionDetail = CategoriesFragmentDirections.actionCategoriesFragmentToProductsFragment(categoryId = categoryId)
                 findNavController().navigate(actionDetail)
             }
         })

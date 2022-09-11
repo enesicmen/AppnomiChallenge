@@ -75,7 +75,7 @@ class CategoriesAdapter(
 
             binding.root.setOnClickListener(
                 View.OnClickListener {
-                    mCallback?.onClickItem(position, categories)
+                    mCallback?.onClickItem(position, categories.categoryId!!)
                 }
             )
         }
@@ -87,6 +87,6 @@ class CategoriesAdapter(
     }
 
     interface CallBack {
-        fun onClickItem(position: Int, categories: Categories)
+        fun onClickItem(position: Int, categoryId: String)
     }
 }
