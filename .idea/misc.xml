@@ -9,6 +9,9 @@
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.34306569343065696" />
         <entry key="app/src/main/res/layout/fragment_products_detail.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/row_categories.xml" value="0.2504528985507246" />
+        <entry key="app/src/main/res/layout/row_product_detail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/row_product_detail_image.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/row_product_image.xml" value="0.1" />
         <entry key="app/src/main/res/layout/row_products.xml" value="0.24667727705361187" />
         <entry key="app/src/main/res/layout/row_products_image.xml" value="0.25" />
       </map>

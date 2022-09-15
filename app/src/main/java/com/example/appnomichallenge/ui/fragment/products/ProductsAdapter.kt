@@ -90,7 +90,7 @@ class ProductsAdapter(
 
             binding.root.setOnClickListener(
                 View.OnClickListener {
-                    mCallback?.onClickItem(position, products)
+                    mCallback?.onClickItem(position, products,products.id!!)
                 }
             )
         }
@@ -113,6 +113,6 @@ class ProductsAdapter(
     }
 
     interface CallBack {
-        fun onClickItem(position: Int, products: Products)
+        fun onClickItem(position: Int, products: Products,productId: String)
     }
 }

@@ -2,6 +2,7 @@ package com.example.appnomichallenge.ui.fragment.products
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.example.appnomichallenge.data.Resource
 import com.example.appnomichallenge.data.model.Products
 import com.example.appnomichallenge.databinding.FragmentProductsBinding
@@ -60,7 +61,10 @@ class ProductsFragment:
     private fun setProductsAdapter() {
         mProductsAdapter = ProductsAdapter(requireActivity(),mSortedProductsList)
         mProductsAdapter.setCallBack(object : ProductsAdapter.CallBack{
-            override fun onClickItem(position: Int, products: Products) {}
+            override fun onClickItem(position: Int, products: Products, productId: String) {
+                val actionDetail = ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(productId = productId)
+                findNavController().navigate(actionDetail)
+            }
         })
         getViewBinding()?.rvProducts?.adapter = mProductsAdapter
     }
