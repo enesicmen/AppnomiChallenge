@@ -46,6 +46,8 @@
     <dimen name="iv_margin_top_5dp">5dp</dimen>
     <dimen name="iv_width_64dp">64dp</dimen>
     <dimen name="iv_width_50dp">50dp</dimen>
+    <dimen name="iv_margin_end_10dp">10dp</dimen>
+    <dimen name="iv_width_and_height_30dp">30dp</dimen>
 
     <!-- ImageView Dimens -->
 
