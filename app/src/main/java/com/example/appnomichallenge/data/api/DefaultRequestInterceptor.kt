@@ -16,15 +16,11 @@ class DefaultRequestInterceptor : Interceptor {
 
         val original = chain.request()
 
-        val originalHttpUrl = original.url
-        val url = originalHttpUrl.newBuilder()
-            .build()
-
         original.newBuilder().apply {
             addHeader("Content-Type", CONTENT_TYPE)
             addHeader("Api-Key", BuildConfig.API_KEY)
             addHeader("Alias-Key",BuildConfig.ALIAS_KEY)
-            url(url)
+            url(original.url)
             return chain.proceed(build())
         }
     }

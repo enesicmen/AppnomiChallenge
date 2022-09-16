@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.appnomichallenge.data.Resource
-import com.example.appnomichallenge.data.model.Products
+import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.databinding.FragmentProductsBinding
 import com.example.appnomichallenge.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,33 +17,28 @@ class ProductsFragment:
 
     lateinit var mProductsAdapter: ProductsAdapter
 
-    private var mProductsList: MutableList<Products> = arrayListOf()
+    private var mProductList: MutableList<Product> = mutableListOf()
 
-    private var mSortedProductsList: MutableList<Products> = arrayListOf()
+    override fun setViewModelClass() = ProductsViewModel::class.java
+
+    override fun setViewBinding(): FragmentProductsBinding =
+        FragmentProductsBinding.inflate(layoutInflater)
 
     override fun initView(savedInstanceState: Bundle?) {
-        setProductsAdapter()
-        getViewModel()?.productsList?.observe(this) {
+        initProductsAdapter()
+        getViewModel()?.productList?.observe(this) {
             when(it) {
-                is Resource.Loading -> {
-                    getViewBinding()?.progressBar?.visibility = View.VISIBLE
-                }
+                is Resource.Loading -> getViewBinding()?.progressBar?.visibility = View.VISIBLE
+
                 is Resource.Success -> {
                     getViewBinding()?.progressBar?.visibility = View.GONE
                     setProductsList(it.data!!)
                 }
-                is Resource.Error -> {
-                    getViewBinding()?.progressBar?.visibility = View.GONE
-                }
+                is Resource.Error -> getViewBinding()?.progressBar?.visibility = View.GONE
             }
         }
+
     }
-
-    override fun setViewModelClass() =
-        ProductsViewModel::class.java
-
-    override fun setViewBinding(): FragmentProductsBinding =
-        FragmentProductsBinding.inflate(layoutInflater)
 
     override fun readDataFromArguments() {
         super.readDataFromArguments()
@@ -55,13 +50,13 @@ class ProductsFragment:
 
     override fun initLogic() {
         super.initLogic()
-        getViewModel()!!.getProducts(mCategoryId!!)
+        getViewModel()!!.getProducts(mCategoryId!!,"Price")
     }
 
-    private fun setProductsAdapter() {
-        mProductsAdapter = ProductsAdapter(requireActivity(),mSortedProductsList)
+    private fun initProductsAdapter() {
+        mProductsAdapter = ProductsAdapter(requireActivity(),mProductList)
         mProductsAdapter.setCallBack(object : ProductsAdapter.CallBack{
-            override fun onClickItem(position: Int, products: Products, productId: String) {
+            override fun onClickItem(position: Int, product: Product, productId: String) {
                 val actionDetail = ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(productId = productId)
                 findNavController().navigate(actionDetail)
             }
@@ -69,17 +64,9 @@ class ProductsFragment:
         getViewBinding()?.rvProducts?.adapter = mProductsAdapter
     }
 
-    private fun sortProductList() {
-        val sortedProductsList = mProductsList.sortedByDescending { it.price }
-        mSortedProductsList.clear()
-        mSortedProductsList.addAll(sortedProductsList)
-        mProductsAdapter.notifyDataSetChanged()
-    }
-
-    private fun setProductsList(products: List<Products>) {
-        mProductsList.clear()
-        mProductsList.addAll(products)
-        sortProductList()
+    private fun setProductsList(products: List<Product>) {
+        mProductList.clear()
+        mProductList.addAll(products)
         mProductsAdapter.notifyDataSetChanged()
     }
 }

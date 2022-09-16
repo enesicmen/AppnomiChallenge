@@ -3,7 +3,7 @@ package com.example.appnomichallenge.data.repository
 import com.example.appnomichallenge.data.NetworkCallback
 import com.example.appnomichallenge.data.api.ApiService
 import com.example.appnomichallenge.data.api.response.ProductDetailApiResponse
-import com.example.appnomichallenge.data.model.ProductDetail
+import com.example.appnomichallenge.data.model.Product
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,7 +12,7 @@ import javax.inject.Inject
 class ProductDetailRepository @Inject constructor(
     private val apiService: ApiService
 ) {
-    fun getProductDetail(productId: String,callback: NetworkCallback<ProductDetail>) {
+    fun getProductDetail(productId: String,callback: NetworkCallback<Product>) {
 
         val call: Call<ProductDetailApiResponse> = apiService.getProductDetail(productId)
         call.enqueue(object : Callback<ProductDetailApiResponse>{

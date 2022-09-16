@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:elevation="@dimen/cw_elevation_10dp"
     app:cardCornerRadius="@dimen/cw_corner_radius_10dp"
@@ -8,9 +12,6 @@
     android:layout_marginStart="@dimen/cw_margin_start_10dp"
     android:layout_marginEnd="@dimen/cw_margin_end_10dp"
     android:padding="@dimen/cw_padding_16dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:backgroundTint="@color/light_blue"
     android:layout_marginTop="@dimen/cw_margin_top_10dp"
     android:layout_height="wrap_content">
@@ -34,6 +35,7 @@
 
         <TextView
             android:id="@+id/tvName"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -45,6 +47,7 @@
 
         <TextView
             android:id="@+id/tvCreateDate"
+            android:textSize="13sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/tv_margin_top_5dp"
@@ -55,4 +58,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>

@@ -3,7 +3,6 @@ package com.example.appnomichallenge.data.api
 import com.example.appnomichallenge.data.api.response.CategoriesApiResponse
 import com.example.appnomichallenge.data.api.response.ProductDetailApiResponse
 import com.example.appnomichallenge.data.api.response.ProductsApiResponse
-import com.example.appnomichallenge.data.model.ProductDetail
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,7 +14,7 @@ interface ApiService {
     fun getCategories(): Call<CategoriesApiResponse>
 
     @GET("products/advanced-filtered")
-    fun getProducts(@Query("categoryId") categoryId: String): Call<ProductsApiResponse>
+    fun getProducts(@Query("categoryId") categoryId: String,@Query("sort") sortParameter:String):Call<ProductsApiResponse>
 
     @GET("products/{id}")
     fun getProductDetail(@Path("id") productId: String): Call<ProductDetailApiResponse>

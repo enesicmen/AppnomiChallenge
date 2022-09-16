@@ -7,15 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appnomichallenge.R
-import com.example.appnomichallenge.data.model.Products
-import com.example.appnomichallenge.data.model.ProductsImage
+import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.databinding.RowProductsBinding
-import com.example.appnomichallenge.ui.base.helper.UIFontSize
-import com.example.appnomichallenge.util.Util
+import com.example.appnomichallenge.ui.ext.load
+import com.example.appnomichallenge.util.DateUtils
 
 class ProductsAdapter(
     activity: Activity,
-    products: List<Products>
+    products: List<Product>
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val RES_ITEM_ROW: Int = R.layout.row_products
@@ -23,13 +22,13 @@ class ProductsAdapter(
     private var mLayoutManager: LinearLayoutManager? = null
     private var mActivity: Activity? = null
     private var mCallback: CallBack? = null
-    private var mProductsList: List<Products>
+    private var mProductList: List<Product>
 
     init {
         mActivity = activity
         mInflater = LayoutInflater.from(mActivity)
         mLayoutManager = LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false)
-        mProductsList = products
+        mProductList = products
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -43,17 +42,17 @@ class ProductsAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val mProducts: Products =
-            mProductsList[position]
+        val mProduct: Product =
+            mProductList[position]
 
         (holder as ProductsAdapter.ProductsViewHolder).onBind(
             position,
-            mProducts
+            mProduct
         )
     }
 
     override fun getItemCount(): Int {
-        return mProductsList.size
+        return mProductList.size
     }
 
     fun setCallBack(callBack: CallBack?) {
@@ -62,57 +61,34 @@ class ProductsAdapter(
 
     inner class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = RowProductsBinding.bind(itemView)
-        lateinit var mProductsImageAdapter: ProductsImageAdapter
 
-        init {
-            setFontSize()
-        }
+        fun onBind(position: Int, product: Product) {
 
-        fun onBind(position: Int, products: Products) {
+            binding.tvTitle.text = product.title
+            binding.tvPriceValue.text = product.price.toString()
+            binding.tvPriceCurrency.text = product.currency
+            binding.tvCreateDate.text = DateUtils.getDateFormat(product.createDate!!)
+            binding.ivImage.load(product.featuredImage?.thumbnail)
 
-            binding.tvTitle.text = products.title
-            binding.tvPriceValue.text = products.price.toString()
-            binding.tvPriceCurrency.text = products.currency
-            binding.tvCreateDate.text = Util.getDateFormat(products.createDate!!)
+            if(product.campaignPrice != null) {
 
-            if(products.campaignPrice != null) {
-
-                binding.tvCampaignPriceValue.text = products.campaignPrice.toString()
-                binding.tvCampaignPriceCurrency.text = products.currency
+                binding.tvCampaignPriceValue.text = product.campaignPrice.toString()
+                binding.tvCampaignPriceCurrency.text = product.currency
             }else {
                 binding.tvCampaignPriceValue.visibility = View.GONE
                 binding.tvCampaignPriceCurrency.visibility = View.GONE
                 binding.tvCampaignPrice.visibility = View.GONE
             }
 
-            val productsImage = products.productsImage
-            setProductsImageAdapter(productsImage)
-
             binding.root.setOnClickListener(
                 View.OnClickListener {
-                    mCallback?.onClickItem(position, products,products.id!!)
+                    mCallback?.onClickItem(position, product,product.id!!)
                 }
             )
-        }
-
-        private fun setProductsImageAdapter(images: List<ProductsImage>) {
-            mProductsImageAdapter = ProductsImageAdapter(mActivity!!,images ?: emptyList())
-            binding.rvImages.adapter = mProductsImageAdapter
-        }
-
-        private fun setFontSize(){
-            binding.tvTitle.textSize = UIFontSize.FONT_SIZE_15
-            binding.tvPrice.textSize = UIFontSize.FONT_SIZE_13
-            binding.tvPriceValue.textSize = UIFontSize.FONT_SIZE_13
-            binding.tvPriceCurrency.textSize = UIFontSize.FONT_SIZE_13
-            binding.tvCampaignPrice.textSize = UIFontSize.FONT_SIZE_13
-            binding.tvCampaignPriceValue.textSize = UIFontSize.FONT_SIZE_13
-            binding.tvCampaignPriceCurrency.textSize = UIFontSize.FONT_SIZE_13
-            binding.tvCreateDate.textSize = UIFontSize.FONT_SIZE_13
         }
     }
 
     interface CallBack {
-        fun onClickItem(position: Int, products: Products,productId: String)
+        fun onClickItem(position: Int, product: Product, productId: String)
     }
 }

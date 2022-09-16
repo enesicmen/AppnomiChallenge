@@ -7,15 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appnomichallenge.R
-import com.example.appnomichallenge.data.model.Categories
+import com.example.appnomichallenge.data.model.Category
 import com.example.appnomichallenge.databinding.RowCategoriesBinding
-import com.example.appnomichallenge.ui.base.helper.UIFontSize
 import com.example.appnomichallenge.ui.ext.load
-import com.example.appnomichallenge.util.Util
+import com.example.appnomichallenge.util.DateUtils
 
 class CategoriesAdapter(
     activity: Activity,
-    categories: List<Categories>
+    categories: List<Category>
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val RES_ITEM_ROW: Int = R.layout.row_categories
@@ -23,13 +22,13 @@ class CategoriesAdapter(
     private var mLayoutManager: LinearLayoutManager? = null
     private var mActivity: Activity? = null
     private var mCallback: CallBack? = null
-    private var mCategoriesList: List<Categories>
+    private var mCategoryList: List<Category>
 
     init {
         mActivity = activity
         mInflater = LayoutInflater.from(mActivity)
         mLayoutManager = LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false)
-        mCategoriesList = categories
+        mCategoryList = categories
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -43,17 +42,17 @@ class CategoriesAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val mCategories: Categories =
-            mCategoriesList[position]
+        val mCategory: Category =
+            mCategoryList[position]
 
         (holder as CategoriesViewHolder).onBind(
             position,
-            mCategories
+            mCategory
         )
     }
 
     override fun getItemCount(): Int {
-        return mCategoriesList.size
+        return mCategoryList.size
     }
 
     fun setCallBack(callBack: CallBack?) {
@@ -63,26 +62,17 @@ class CategoriesAdapter(
     inner class CategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = RowCategoriesBinding.bind(itemView)
 
-        init {
-            setFontSize()
-        }
+        fun onBind(position: Int, category: Category) {
 
-        fun onBind(position: Int, categories: Categories) {
-
-            binding.tvName.text = categories.name
-            binding.ivCategory.load(categories.icon)
-            binding.tvCreateDate.text = Util.getDateFormat(categories.createDate!!)
+            binding.tvName.text = category.name
+            binding.ivCategory.load(category.icon)
+            binding.tvCreateDate.text = DateUtils.getDateFormat(category.createDate!!)
 
             binding.root.setOnClickListener(
                 View.OnClickListener {
-                    mCallback?.onClickItem(position, categories.categoryId!!)
+                    mCallback?.onClickItem(position, category.categoryId!!)
                 }
             )
-        }
-
-        private fun setFontSize(){
-            binding.tvName.textSize = UIFontSize.FONT_SIZE_18
-            binding.tvCreateDate.textSize = UIFontSize.FONT_SIZE_13
         }
     }
 

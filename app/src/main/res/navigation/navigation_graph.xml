@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,10 +13,10 @@
         android:label="Categories"
         tools:layout="@layout/fragment_categories">
 
-
         <action
             android:id="@+id/action_categoriesFragment_to_productsFragment"
             app:destination="@id/productsFragment" />
+
     </fragment>
 
     <fragment
@@ -45,6 +46,5 @@
             app:argType="string" />
 
     </fragment>
-
 
 </navigation>

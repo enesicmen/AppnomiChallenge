@@ -2,7 +2,10 @@ package com.example.appnomichallenge.data.model
 
 import com.google.gson.annotations.SerializedName
 
-class ProductDetail {
+class Product {
+
+    @SerializedName("id")
+    val id: String? = null
 
     @SerializedName("title")
     val title: String? = null
@@ -16,15 +19,18 @@ class ProductDetail {
     @SerializedName("description")
     val description: String? = null
 
-    @SerializedName("stock")
-    val stock: Int? = null
-
     @SerializedName("currency")
     val currency: String? = null
 
     @SerializedName("createDate")
     val createDate: String? = null
 
-    @SerializedName("images")
-    val productsImage: List<ProductDetailImage> = arrayListOf()
+    @SerializedName("featuredImage")
+    val featuredImage: FeaturedImage? = null
+
+    @SerializedName("stock")
+    val stock: Int? = null
+
 }
+
+

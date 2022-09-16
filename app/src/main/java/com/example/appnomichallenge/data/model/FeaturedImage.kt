@@ -2,8 +2,12 @@ package com.example.appnomichallenge.data.model
 
 import com.google.gson.annotations.SerializedName
 
-class ProductDetailImage {
+class FeaturedImage {
 
     @SerializedName("t")
-    val imageUrl: String? = null
+    val thumbnail: String? = null
+
+    @SerializedName("n")
+    val normal: String? = null
+
 }

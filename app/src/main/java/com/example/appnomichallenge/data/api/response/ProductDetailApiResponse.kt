@@ -1,8 +1,8 @@
 package com.example.appnomichallenge.data.api.response
 
-import com.example.appnomichallenge.data.model.ProductDetail
+import com.example.appnomichallenge.data.model.Product
 
 class ProductDetailApiResponse (
     val success: Boolean = true,
-    val data: ProductDetail? = null
+    val data: Product? = null
 )

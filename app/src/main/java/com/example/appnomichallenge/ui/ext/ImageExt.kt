@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat
 import com.example.appnomichallenge.R
 import com.squareup.picasso.Picasso
 
-
 fun ImageView?.load(
     url: String?,
     withPlaceholder: Boolean = true,

@@ -3,7 +3,7 @@ package com.example.appnomichallenge.ui.fragment.products
 import androidx.lifecycle.ViewModel
 import com.example.appnomichallenge.data.NetworkCallback
 import com.example.appnomichallenge.data.Resource
-import com.example.appnomichallenge.data.model.Products
+import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.data.repository.ProductsRepository
 import com.example.appnomichallenge.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,19 +14,17 @@ class ProductsViewModel @Inject constructor(
     private val productsRepository: ProductsRepository
 ) : ViewModel() {
 
-    var productsList: SingleLiveEvent<Resource<List<Products>>> = SingleLiveEvent()
+    var productList: SingleLiveEvent<Resource<List<Product>>> = SingleLiveEvent()
 
-    fun getProducts(categoryId: String){
-        productsList.value = Resource.Loading()
-        productsRepository.getProducts(categoryId,object : NetworkCallback<List<Products>> {
-            override fun onSuccess(data: List<Products>) {
-                productsList.value = Resource.Success(data)
+    fun getProducts(categoryId: String,sortParameter:String){
+        productList.value = Resource.Loading()
+        productsRepository.getProducts(categoryId,sortParameter,object : NetworkCallback<List<Product>> {
+            override fun onSuccess(data: List<Product>) {
+                productList.value = Resource.Success(data)
             }
-
             override fun onError(message: String) {
-                productsList.value = Resource.Error(message)
+                productList.value = Resource.Error(message)
             }
-
         })
     }
 }

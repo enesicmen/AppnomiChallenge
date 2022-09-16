@@ -1,11 +1,7 @@
 package com.example.appnomichallenge.data.model
-
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-class Categories (
+class Category (
 
     @SerializedName("categoryId")
     val categoryId: String? = null,
@@ -23,4 +19,4 @@ class Categories (
     val isActive: Boolean = false,
 
 
-): Parcelable
+)
