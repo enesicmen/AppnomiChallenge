@@ -1,94 +1,64 @@
 package com.example.appnomichallenge.ui.fragment.products
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appnomichallenge.R
 import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.databinding.RowProductsBinding
+import com.example.appnomichallenge.ui.RecyclerItemClickListener
 import com.example.appnomichallenge.ui.ext.load
 import com.example.appnomichallenge.util.DateUtils
 
 class ProductsAdapter(
-    activity: Activity,
-    products: List<Product>
-): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val productList: MutableList<Product>,
+    private val onClicked: RecyclerItemClickListener
+) : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
-    private val RES_ITEM_ROW: Int = R.layout.row_products
-    private var mInflater: LayoutInflater? = null
-    private var mLayoutManager: LinearLayoutManager? = null
-    private var mActivity: Activity? = null
-    private var mCallback: CallBack? = null
-    private var mProductList: List<Product>
+    class ViewHolder(
+        private val binding: RowProductsBinding,
+        private val onClicked: RecyclerItemClickListener
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-    init {
-        mActivity = activity
-        mInflater = LayoutInflater.from(mActivity)
-        mLayoutManager = LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false)
-        mProductList = products
-    }
+        companion object {
+            fun from(
+                viewGroup: ViewGroup,
+                onClicked: RecyclerItemClickListener,
+            ): ViewHolder {
+                val layoutInflater = LayoutInflater.from(viewGroup.context)
+                val binding = RowProductsBinding.inflate(layoutInflater, viewGroup, false)
+                return ViewHolder(binding = binding, onClicked = onClicked)
+            }
+        }
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-        recyclerView.layoutManager = mLayoutManager
-    }
+        init {
+            itemView.setOnClickListener { onClicked(adapterPosition) }
+        }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val item: View = mInflater?.inflate(RES_ITEM_ROW, parent, false)!!
-        return ProductsViewHolder(item)
-    }
+        fun bind(item: Product) {
+            binding.tvTitle.text = item.title
+            binding.tvPriceValue.text = item.price.toString()
+            binding.tvPriceCurrency.text = item.currency
+            binding.tvCreateDate.text = DateUtils.getDateFormat(item.createDate!!)
+            binding.ivImage.load(item.featuredImage?.thumbnail)
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val mProduct: Product =
-            mProductList[position]
+            if(item.campaignPrice != null) {
 
-        (holder as ProductsAdapter.ProductsViewHolder).onBind(
-            position,
-            mProduct
-        )
-    }
-
-    override fun getItemCount(): Int {
-        return mProductList.size
-    }
-
-    fun setCallBack(callBack: CallBack?) {
-        mCallback = callBack
-    }
-
-    inner class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = RowProductsBinding.bind(itemView)
-
-        fun onBind(position: Int, product: Product) {
-
-            binding.tvTitle.text = product.title
-            binding.tvPriceValue.text = product.price.toString()
-            binding.tvPriceCurrency.text = product.currency
-            binding.tvCreateDate.text = DateUtils.getDateFormat(product.createDate!!)
-            binding.ivImage.load(product.featuredImage?.thumbnail)
-
-            if(product.campaignPrice != null) {
-
-                binding.tvCampaignPriceValue.text = product.campaignPrice.toString()
-                binding.tvCampaignPriceCurrency.text = product.currency
+                binding.tvCampaignPriceValue.text = item.campaignPrice.toString()
+                binding.tvCampaignPriceCurrency.text = item.currency
             }else {
                 binding.tvCampaignPriceValue.visibility = View.GONE
                 binding.tvCampaignPriceCurrency.visibility = View.GONE
                 binding.tvCampaignPrice.visibility = View.GONE
             }
-
-            binding.root.setOnClickListener(
-                View.OnClickListener {
-                    mCallback?.onClickItem(position, product,product.id!!)
-                }
-            )
         }
     }
 
-    interface CallBack {
-        fun onClickItem(position: Int, product: Product, productId: String)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder.from(viewGroup = parent, onClicked = onClicked)
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
+        holder.bind(item = productList[position])
+
+    override fun getItemCount(): Int = productList.size
 }
