@@ -54,13 +54,14 @@ class ProductsFragment:
     }
 
     private fun initProductsAdapter() {
-        mProductsAdapter = ProductsAdapter(requireActivity(),mProductList)
-        mProductsAdapter.setCallBack(object : ProductsAdapter.CallBack{
-            override fun onClickItem(position: Int, product: Product, productId: String) {
-                val actionDetail = ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(productId = productId)
+
+        mProductsAdapter = ProductsAdapter(
+            productList = mProductList,
+            onClicked = {
+                val actionDetail = ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(productId = mProductList[it].id ?: "")
                 findNavController().navigate(actionDetail)
             }
-        })
+        )
         getViewBinding()?.rvProducts?.adapter = mProductsAdapter
     }
 

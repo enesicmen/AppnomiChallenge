@@ -43,13 +43,13 @@ class CategoriesFragment:
     }
 
     private fun initCategoryAdapter() {
-        mCategoriesAdapter = CategoriesAdapter(requireActivity(), mCategoryList)
-        mCategoriesAdapter.setCallBack(object : CategoriesAdapter.CallBack {
-            override fun onClickItem(position: Int, categoryId: String) {
-                val actionDetail = CategoriesFragmentDirections.actionCategoriesFragmentToProductsFragment(categoryId = categoryId)
+        mCategoriesAdapter = CategoriesAdapter(
+            categoryList = mCategoryList,
+            onClicked = {
+                val actionDetail = CategoriesFragmentDirections.actionCategoriesFragmentToProductsFragment(categoryId = mCategoryList[it].categoryId ?: "")
                 findNavController().navigate(actionDetail)
             }
-        })
+        )
         getViewBinding()?.rvCategories?.adapter = mCategoriesAdapter
     }
 
