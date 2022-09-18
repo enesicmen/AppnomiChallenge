@@ -178,6 +178,7 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         android:elevation="10dp"
+        android:indeterminateDrawable="@drawable/shape_ring_proggres"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
