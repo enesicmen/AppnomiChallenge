@@ -4,14 +4,14 @@ import androidx.lifecycle.ViewModel
 import com.example.appnomichallenge.data.NetworkCallback
 import com.example.appnomichallenge.data.Resource
 import com.example.appnomichallenge.data.model.Product
-import com.example.appnomichallenge.data.repository.ProductsRepository
+import com.example.appnomichallenge.data.repository.ProductRepository
 import com.example.appnomichallenge.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductsViewModel @Inject constructor(
-    private val productsRepository: ProductsRepository
+    private val productsRepository: ProductRepository
 ) : ViewModel() {
 
     var productList: SingleLiveEvent<Resource<List<Product>>> = SingleLiveEvent()

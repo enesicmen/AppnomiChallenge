@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class CategoriesRepository @Inject constructor(
+class CategoryRepository @Inject constructor(
     private val apiService: ApiService
 ) {
     fun getCategories(callback: NetworkCallback<List<Category>>) {
