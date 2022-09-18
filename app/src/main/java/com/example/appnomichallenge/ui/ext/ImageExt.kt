@@ -16,7 +16,7 @@ fun ImageView?.load(
         url?.let {
             val requestCreator = Picasso.get().load(it)
             val placeHolderDrawable: Drawable =
-                placeHolder ?: ContextCompat.getDrawable(context, R.drawable.placeholder_small)!!
+                placeHolder ?: ContextCompat.getDrawable(context, R.drawable.placeholder)!!
             if (withPlaceholder) {
                 requestCreator.placeholder(placeHolderDrawable)
             }

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.131" />
+        <entry key="app/src/main/res/drawable/shape_ring_proggres.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_categories.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.25" />
@@ -12,7 +13,7 @@
         <entry key="app/src/main/res/layout/row_product_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/row_product_detail_image.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/row_product_image.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/row_products.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/row_products.xml" value="0.25" />
         <entry key="app/src/main/res/layout/row_products_image.xml" value="0.25" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.131" />
       </map>

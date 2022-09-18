@@ -7,6 +7,7 @@ import com.example.appnomichallenge.data.Resource
 import com.example.appnomichallenge.data.model.Category
 import com.example.appnomichallenge.databinding.FragmentCategoriesBinding
 import com.example.appnomichallenge.ui.base.BaseFragment
+import com.example.appnomichallenge.ui.ext.setVisibility
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,13 +27,13 @@ class CategoriesFragment:
         initCategoryAdapter()
         getViewModel()?.categoryList?.observe(this){
             when (it) {
-                is Resource.Loading -> getViewBinding()?.progressBar?.visibility = View.VISIBLE
+                is Resource.Loading -> getViewBinding()?.progressBar?.setVisibility(isVisible = true)
 
                 is Resource.Success -> {
-                    getViewBinding()?.progressBar?.visibility = View.GONE
+                    getViewBinding()?.progressBar?.setVisibility(isVisible = false)
                     setCategoriesList(it.data!!)
                 }
-                is Resource.Error -> getViewBinding()?.progressBar?.visibility = View.GONE
+                is Resource.Error -> getViewBinding()?.progressBar?.setVisibility(isVisible = false)
             }
         }
     }

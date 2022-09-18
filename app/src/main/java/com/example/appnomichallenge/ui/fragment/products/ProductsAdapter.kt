@@ -8,6 +8,7 @@ import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.databinding.RowProductsBinding
 import com.example.appnomichallenge.ui.RecyclerItemClickListener
 import com.example.appnomichallenge.ui.ext.load
+import com.example.appnomichallenge.ui.ext.setVisibility
 import com.example.appnomichallenge.util.DateUtils
 
 class ProductsAdapter(
@@ -36,20 +37,20 @@ class ProductsAdapter(
         }
 
         fun bind(item: Product) {
-            binding.tvTitle.text = item.title
-            binding.tvPriceValue.text = item.price.toString()
-            binding.tvPriceCurrency.text = item.currency
-            binding.tvCreateDate.text = DateUtils.getDateFormat(item.createDate!!)
-            binding.ivImage.load(item.featuredImage?.thumbnail)
-
-            if(item.campaignPrice != null) {
-
-                binding.tvCampaignPriceValue.text = item.campaignPrice.toString()
-                binding.tvCampaignPriceCurrency.text = item.currency
-            }else {
-                binding.tvCampaignPriceValue.visibility = View.GONE
-                binding.tvCampaignPriceCurrency.visibility = View.GONE
-                binding.tvCampaignPrice.visibility = View.GONE
+            binding.apply {
+               tvTitle.text = item.title
+               tvPriceValue.text = item.price.toString()
+               tvPriceCurrency.text = item.currency
+               tvCreateDate.text = DateUtils.getDateFormat(item.createDate!!)
+               ivImage.load(item.featuredImage?.thumbnail)
+                item.campaignPrice?.let {
+                    tvCampaignPriceValue.text = it.toString()
+                    tvCampaignPriceCurrency.text = item.currency
+                } ?: run {
+                    tvCampaignPriceValue.setVisibility(isVisible = false)
+                    tvCampaignPriceCurrency.setVisibility(isVisible = false)
+                    tvCampaignPrice.setVisibility(isVisible = false)
+                }
             }
         }
     }

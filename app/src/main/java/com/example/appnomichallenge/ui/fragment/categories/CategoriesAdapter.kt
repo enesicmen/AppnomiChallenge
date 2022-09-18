@@ -9,7 +9,6 @@ import com.example.appnomichallenge.ui.RecyclerItemClickListener
 import com.example.appnomichallenge.ui.ext.load
 import com.example.appnomichallenge.util.DateUtils
 
-// example usage of RecyclerView.Adapter with DataBinding
 class CategoriesAdapter(
     private val categoryList: MutableList<Category>,
     private val onClicked: RecyclerItemClickListener
@@ -36,9 +35,11 @@ class CategoriesAdapter(
         }
 
         fun bind(item: Category) {
-            binding.tvName.text = item.name
-            binding.ivCategory.load(item.icon)
-            binding.tvCreateDate.text = DateUtils.getDateFormat(item.createDate!!)
+            binding.apply {
+                tvName.text = item.name
+                ivCategory.load(item.icon)
+                tvCreateDate.text = DateUtils.getDateFormat(item.createDate!!)
+            }
         }
     }
 

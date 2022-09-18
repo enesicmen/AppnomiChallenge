@@ -8,9 +8,9 @@ import com.example.appnomichallenge.databinding.FragmentProductsDetailBinding
 import com.example.appnomichallenge.ui.base.BaseFragment
 import com.example.appnomichallenge.ui.ext.load
 import com.example.appnomichallenge.ui.ext.setHtmlText
+import com.example.appnomichallenge.ui.ext.setVisibility
 import com.example.appnomichallenge.util.DateUtils
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class ProductDetailFragment:
@@ -28,14 +28,14 @@ class ProductDetailFragment:
     override fun initView(savedInstanceState: Bundle?) {
         getViewModel()?.productDetailList?.observe(this) {
             when(it) {
-                is Resource.Loading -> getViewBinding()?.progressBar?.visibility = View.VISIBLE
+                is Resource.Loading -> getViewBinding()?.progressBar?.setVisibility(isVisible = true)
 
                 is Resource.Success -> {
-                    getViewBinding()?.progressBar?.visibility = View.GONE
+                    getViewBinding()?.progressBar?.setVisibility(isVisible = false)
                     mProductDetail = it.data
                     setData()
                 }
-                is Resource.Error -> getViewBinding()?.progressBar?.visibility = View.GONE
+                is Resource.Error -> getViewBinding()?.progressBar?.setVisibility(isVisible = false)
             }
         }
     }
@@ -55,6 +55,7 @@ class ProductDetailFragment:
 
     private fun setData(){
         getViewBinding()?.apply {
+            cwProductDetail.setVisibility(isVisible = true)
             tvTitle.text = mProductDetail?.title
             tvPriceValue.text = mProductDetail?.price.toString()
             tvCreateDate.text = DateUtils.getDateFormat(mProductDetail?.createDate!!)
@@ -65,18 +66,18 @@ class ProductDetailFragment:
             if(mProductDetail?.campaignPrice != null){
                 tvCampaignPriceValue.text = mProductDetail?.campaignPrice.toString()
                 tvCampaignPriceCurrency.text = mProductDetail?.currency
-            }else {
-                tvCampaignPriceValue.visibility = View.GONE
-                tvCampaignPriceCurrency.visibility = View.GONE
-                tvCampaignPrice.visibility = View.GONE
+            } else {
+                tvCampaignPriceValue.setVisibility(isVisible = false)
+                tvCampaignPriceCurrency.setVisibility(isVisible = false)
+                tvCampaignPrice.setVisibility(isVisible = false)
             }
 
             if(mProductDetail?.stock!! <= 0){
-                ivOutOfStock.visibility = View.VISIBLE
-                btnBasket.visibility = View.GONE
-            }else {
-                ivOutOfStock.visibility = View.GONE
-                btnBasket.visibility = View.VISIBLE
+                ivOutOfStock.setVisibility(isVisible = true)
+                btnBasket.setVisibility(isVisible = false)
+            } else {
+                ivOutOfStock.setVisibility(isVisible = false)
+                btnBasket.setVisibility(isVisible = true)
             }
         }
     }
