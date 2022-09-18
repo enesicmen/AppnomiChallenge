@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AppnomiChallenge</string>
     <string name="total_products">Total Products:</string>
-    <string name="price">Price:</string>
-    <string name="campaign_price">Campaign Price:</string>
+    <string name="price">Price: %.2f %s</string>
+    <string name="campaign_price">Campaign Price: %.2f %s</string>
     <string name="add_to_basket">Add To Basket</string>
 </resources>

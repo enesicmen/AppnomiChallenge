@@ -1,6 +1,7 @@
 package com.example.appnomichallenge.ui.productdetail
 
 import android.os.Bundle
+import com.example.appnomichallenge.R
 import com.example.appnomichallenge.data.Resource
 import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.databinding.FragmentProductsDetailBinding
@@ -56,18 +57,15 @@ class ProductDetailFragment:
         getViewBinding()?.apply {
             cwProductDetail.setVisibility(isVisible = true)
             tvTitle.text = mProductDetail?.title
-            tvPriceValue.text = mProductDetail?.price.toString()
+            tvPrice.text = getString(R.string.price, mProductDetail?.price, mProductDetail?.currency)
+            tvCampaignPrice.text = getString(R.string.campaign_price, mProductDetail?.campaignPrice, mProductDetail?.currency)
             tvCreateDate.text = DateUtils.getDateFormat(mProductDetail?.createDate!!)
-            tvPriceCurrency.text = mProductDetail?.currency
             ivImage.load(mProductDetail?.featuredImage?.normal)
             tvDescription.setHtmlText(mProductDetail?.description)
 
             if(mProductDetail?.campaignPrice != null){
-                tvCampaignPriceValue.text = mProductDetail?.campaignPrice.toString()
-                tvCampaignPriceCurrency.text = mProductDetail?.currency
+                tvCampaignPrice.setVisibility(isVisible = true)
             } else {
-                tvCampaignPriceValue.setVisibility(isVisible = false)
-                tvCampaignPriceCurrency.setVisibility(isVisible = false)
                 tvCampaignPrice.setVisibility(isVisible = false)
             }
 

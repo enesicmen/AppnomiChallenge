@@ -45,7 +45,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/placeholder_large" />
+                tools:src="@drawable/placeholder" />
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -64,64 +64,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/tv_margin_start_3dp"
-                android:text="@string/price"
+                tools:text="Price:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-            <TextView
-                android:id="@+id/tvPriceValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/tv_margin_start_5dp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
-                app:layout_constraintStart_toEndOf="@+id/tvPrice"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                tools:text="15" />
-
-            <TextView
-                android:id="@+id/tvPriceCurrency"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/tv_margin_start_3dp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/tvPriceValue"
-                app:layout_constraintStart_toEndOf="@+id/tvPriceValue"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                tools:text="EURO" />
 
             <TextView
                 android:id="@+id/tvCampaignPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/tv_margin_start_3dp"
-                android:text="@string/campaign_price"
+                tools:text="Campaign Price:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
-
-            <TextView
-                android:id="@+id/tvCampaignPriceValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/tv_margin_start_5dp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/tvCampaignPrice"
-                app:layout_constraintStart_toEndOf="@+id/tvCampaignPrice"
-                app:layout_constraintTop_toBottomOf="@+id/tvPrice"
-                tools:text="9" />
-
-            <TextView
-                android:id="@+id/tvCampaignPriceCurrency"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/tv_margin_start_5dp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/tvCampaignPriceValue"
-                app:layout_constraintStart_toEndOf="@+id/tvCampaignPriceValue"
-                app:layout_constraintTop_toBottomOf="@+id/tvPrice"
-                tools:text="EURO" />
 
             <TextView
                 android:id="@+id/tvCreateDate"
