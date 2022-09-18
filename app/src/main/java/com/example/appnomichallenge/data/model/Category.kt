@@ -2,7 +2,6 @@ package com.example.appnomichallenge.data.model
 import com.google.gson.annotations.SerializedName
 
 class Category (
-
     @SerializedName("categoryId")
     val categoryId: String? = null,
 
@@ -17,6 +16,5 @@ class Category (
 
     @SerializedName("isActive")
     val isActive: Boolean = false,
-
 
 )

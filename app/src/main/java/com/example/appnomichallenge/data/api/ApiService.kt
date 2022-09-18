@@ -14,7 +14,9 @@ interface ApiService {
     fun getCategories(): Call<CategoriesApiResponse>
 
     @GET("products/advanced-filtered")
-    fun getProducts(@Query("categoryId") categoryId: String,@Query("sort") sortParameter:String):Call<ProductsApiResponse>
+    fun getProducts(
+        @Query("categoryId") categoryId: String,
+        @Query("sort") sortParameter:String):Call<ProductsApiResponse>
 
     @GET("products/{id}")
     fun getProductDetail(@Path("id") productId: String): Call<ProductDetailApiResponse>

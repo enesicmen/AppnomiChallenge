@@ -18,6 +18,6 @@ object DateUtils {
         }catch (e: ParseException){
             e.printStackTrace()
         }
-        return "Could not get date"
+        return date
     }
 }
