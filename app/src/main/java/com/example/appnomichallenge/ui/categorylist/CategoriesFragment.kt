@@ -1,18 +1,17 @@
-package com.example.appnomichallenge.ui.fragment.categories
+package com.example.appnomichallenge.ui.categorylist
 
 import android.os.Bundle
-import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.appnomichallenge.data.Resource
 import com.example.appnomichallenge.data.model.Category
 import com.example.appnomichallenge.databinding.FragmentCategoriesBinding
-import com.example.appnomichallenge.ui.base.BaseFragment
-import com.example.appnomichallenge.ui.ext.setVisibility
+import com.example.appnomichallenge.ui.common.BaseFragment
+import com.example.appnomichallenge.ui.common.ext.setVisibility
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoriesFragment:
-    BaseFragment<FragmentCategoriesBinding,CategoriesViewModel>(){
+    BaseFragment<FragmentCategoriesBinding, CategoriesViewModel>(){
 
     lateinit var mCategoriesAdapter: CategoriesAdapter
 

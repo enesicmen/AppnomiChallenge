@@ -1,4 +1,4 @@
-package com.example.appnomichallenge.ui.fragment.categories
+package com.example.appnomichallenge.ui.categorylist
 
 import androidx.lifecycle.ViewModel
 import com.example.appnomichallenge.data.NetworkCallback

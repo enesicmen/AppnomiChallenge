@@ -1,4 +1,4 @@
-package com.example.appnomichallenge.ui.activity
+package com.example.appnomichallenge.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

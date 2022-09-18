@@ -1,12 +1,12 @@
-package com.example.appnomichallenge.ui.fragment.categories
+package com.example.appnomichallenge.ui.categorylist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appnomichallenge.data.model.Category
 import com.example.appnomichallenge.databinding.RowCategoriesBinding
-import com.example.appnomichallenge.ui.RecyclerItemClickListener
-import com.example.appnomichallenge.ui.ext.load
+import com.example.appnomichallenge.ui.common.RecyclerItemClickListener
+import com.example.appnomichallenge.ui.common.ext.load
 import com.example.appnomichallenge.util.DateUtils
 
 class CategoriesAdapter(

@@ -1,14 +1,13 @@
-package com.example.appnomichallenge.ui.fragment.products
+package com.example.appnomichallenge.ui.productlist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.databinding.RowProductsBinding
-import com.example.appnomichallenge.ui.RecyclerItemClickListener
-import com.example.appnomichallenge.ui.ext.load
-import com.example.appnomichallenge.ui.ext.setVisibility
+import com.example.appnomichallenge.ui.common.RecyclerItemClickListener
+import com.example.appnomichallenge.ui.common.ext.load
+import com.example.appnomichallenge.ui.common.ext.setVisibility
 import com.example.appnomichallenge.util.DateUtils
 
 class ProductsAdapter(

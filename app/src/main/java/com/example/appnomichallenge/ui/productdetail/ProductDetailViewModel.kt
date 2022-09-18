@@ -1,4 +1,4 @@
-package com.example.appnomichallenge.ui.fragment.productDetail
+package com.example.appnomichallenge.ui.productdetail
 
 import androidx.lifecycle.ViewModel
 import com.example.appnomichallenge.data.NetworkCallback

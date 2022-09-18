@@ -1,4 +1,4 @@
-package com.example.appnomichallenge.ui.ext
+package com.example.appnomichallenge.ui.common.ext
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView

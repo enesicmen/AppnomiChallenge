@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.appnomichallenge.ui.fragment.categories.CategoriesFragment"
+        android:name="com.example.appnomichallenge.ui.categorylist.CategoriesFragment"
         android:label="Categories"
         tools:layout="@layout/fragment_categories">
 
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.example.appnomichallenge.ui.fragment.products.ProductsFragment"
+        android:name="com.example.appnomichallenge.ui.productlist.ProductsFragment"
         android:label="Products"
         tools:layout="@layout/fragment_products">
 
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.example.appnomichallenge.ui.fragment.productDetail.ProductDetailFragment"
+        android:name="com.example.appnomichallenge.ui.productdetail.ProductDetailFragment"
         android:label="Product Detail"
         tools:layout="@layout/fragment_products_detail">
 

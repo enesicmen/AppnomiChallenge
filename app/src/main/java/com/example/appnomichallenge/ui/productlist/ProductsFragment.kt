@@ -1,13 +1,12 @@
-package com.example.appnomichallenge.ui.fragment.products
+package com.example.appnomichallenge.ui.productlist
 
 import android.os.Bundle
-import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.appnomichallenge.data.Resource
 import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.databinding.FragmentProductsBinding
-import com.example.appnomichallenge.ui.base.BaseFragment
-import com.example.appnomichallenge.ui.ext.setVisibility
+import com.example.appnomichallenge.ui.common.BaseFragment
+import com.example.appnomichallenge.ui.common.ext.setVisibility
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

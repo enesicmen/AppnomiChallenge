@@ -1,4 +1,4 @@
-package com.example.appnomichallenge.ui
+package com.example.appnomichallenge
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

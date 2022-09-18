@@ -1,14 +1,13 @@
-package com.example.appnomichallenge.ui.fragment.productDetail
+package com.example.appnomichallenge.ui.productdetail
 
 import android.os.Bundle
-import android.view.View
 import com.example.appnomichallenge.data.Resource
 import com.example.appnomichallenge.data.model.Product
 import com.example.appnomichallenge.databinding.FragmentProductsDetailBinding
-import com.example.appnomichallenge.ui.base.BaseFragment
-import com.example.appnomichallenge.ui.ext.load
-import com.example.appnomichallenge.ui.ext.setHtmlText
-import com.example.appnomichallenge.ui.ext.setVisibility
+import com.example.appnomichallenge.ui.common.BaseFragment
+import com.example.appnomichallenge.ui.common.ext.load
+import com.example.appnomichallenge.ui.common.ext.setHtmlText
+import com.example.appnomichallenge.ui.common.ext.setVisibility
 import com.example.appnomichallenge.util.DateUtils
 import dagger.hilt.android.AndroidEntryPoint
 

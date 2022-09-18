@@ -1,4 +1,4 @@
-package com.example.appnomichallenge.ui.base
+package com.example.appnomichallenge.ui.common
 
 import android.os.Bundle
 import android.view.LayoutInflater
