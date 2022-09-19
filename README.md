@@ -33,3 +33,9 @@ https://github.com/enesicmen/AppnomiChallenge
 - I created kotlin extensions for some common operation to use them all app like loading image from network, showing html text etc.
 - I used version control while creating the task. You can find the project on GitHub:
   https://github.com/enesicmen/AppnomiChallenge
+  
+ ## Preview Video
+ 
+- https://user-images.githubusercontent.com/59308801/190964383-ed0a81a5-acea-4610-8337-1f4e5d5c87ce.mp4
+
+
